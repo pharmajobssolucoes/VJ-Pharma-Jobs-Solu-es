@@ -1,74 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VJ Pharma Jobs & Solutions</title>
+  <meta name="description" content="Recrutamento, formação e consultoria para o sector farmacêutico em Moçambique." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      background: #f5f8fa;
-      color: #333;
+    :root{
+      --bg:#0b1220;/* fundo escuro elegante */
+      --fg:#e8eef9;/* texto principal */
+      --muted:#b8c3d9;/* texto secundário */
+      --brand:#2e7de9;/* azul profissional */
+      --brand-2:#19c1a7;/* detalhe */
+      --card:#111a2f;
+      --border:#22314f;
+      --shadow:0 10px 25px rgba(0,0,0,.25);
+      --radius:18px;
     }
-    header {
-      background: #004080;
-      color: white;
-      padding: 30px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
-    }
-    main {
-      padding: 40px 20px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #0073e6;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn:hover {
-      background: #005bb5;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 15px;
-      background: #004080;
-      color: white;
-      font-size: 0.9em;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220 0%,#0b1426 60%,#0c172c 100%);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(11,18,32,.7);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
+    .logo-mark{width:38px;height:38px;border-radius:12px;background:conic-gradient(from 210deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo-mark span{font-weight:900}
+    .nav a{margin-left:18px;font-weight:600;color:var(--fg);opacity:.9}
+    .btn{display:inline-block;background:linear-gradient(135deg,var(--brand),#215ec0);color:white;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid #1c58b3;box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent;border:1px solid var(--border);color:var(--fg)}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:64px 0}
+    .hero h1{font-size:40px;line-height:1.1;margin:0 0 14px}
+    .hero p{color:var(--muted);margin:0 0 22px}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0}
+    .card{background:linear-gradient(180deg,var(--card),#0d1a31);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 8px}
+    .card p{color:var(--muted);margin:0}
+    .kpi{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .kpi div{background:rgba(46,125,233,.08);border:1px dashed #2e7de966;border-radius:12px;padding:8px 12px;color:#cfe2ff}
+    .section{padding:44px 0}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+    .panel{background:linear-gradient(180deg,#0d1a31,#0c1730);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    ul{margin:10px 0 0 18px;color:var(--muted)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .badge{border:1px solid var(--border);border-radius:999px;padding:6px 10px;color:var(--muted)}
+    .footer{border-top:1px solid var(--border);color:#aab6d1;padding:28px 0;font-size:14px}
+    .muted{color:var(--muted)}
+    .notice{font-size:13px;color:#9fb2d9;margin-top:8px}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .card-grid{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>VJ Pharma Jobs & Solutions</h1>
-    <p>Conectando talentos às oportunidades no sector farmacêutico</p>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark"><span>VJ</span></div>
+        <div>
+          VJ Pharma <span class="muted">Jobs & Solutions</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#vagas">Vagas</a>
+        <a href="#formacao">Formação</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn" href="#contacto">Publicar Vaga</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Bem-vindo à nossa página!</h2>
-    <p>
-      A <strong>VJ Pharma Jobs & Solutions</strong> é uma plataforma dedicada a oferecer
-      soluções inovadoras em emprego e consultoria para o sector farmacêutico.
-    </p>
-    <a href="mailto:vangwaya@gmail.com" class="btn">Contacte-nos</a>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="pill">💊 Talento & Oportunidade em Farmácia</div>
+        <h1>Recrutamento, Formação e Consultoria para o sector farmacêutico</h1>
+        <p>Ajudamos farmácias, distribuidores e profissionais a encontrarem o melhor encaixe. Base de dados actualizada, processos ágeis e foco na qualidade do atendimento em saúde.</p>
+        <div class="cta">
+          <a class="btn" href="#vagas">Ver Vagas</a>
+          <a class="btn secondary" href="#contacto">Sou Empresa</a>
+        </div>
+        <div class="badges">
+          <span class="badge">✔️ Triagem de CVs</span>
+          <span class="badge">✔️ Entrevistas técnicas</span>
+          <span class="badge">✔️ Cursos profissionalizantes</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Porque escolher a VJ Pharma?</h3>
+        <p class="muted">Processo de recrutamento especializado e formação contínua para elevar o padrão do serviço farmacêutico.</p>
+        <div class="kpi">
+          <div>Recrutamento especializado</div>
+          <div>Formação prática</div>
+          <div>Consultoria regulatória</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="section">
+      <h2>Serviços</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Recrutamento & Seleção</h3>
+          <p>Publicação de vagas, triagem, entrevistas comportamentais e técnicas, verificação de referências e onboarding.</p>
+        </div>
+        <div class="card">
+          <h3>Formação Profissionalizante</h3>
+          <p>Cursos de curta duração: boas práticas farmacêuticas, atendimento, gestão de stock e legislação.</p>
+        </div>
+        <div class="card">
+          <h3>Consultoria</h3>
+          <p>Apoio a farmácias, distribuidores e titulares de AIM em processos, compliance e melhoria operacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vagas" class="section">
+      <h2>Vagas em Destaque</h2>
+      <div class="panel">
+        <p class="muted">Em breve: listagem dinâmica de vagas. Por agora, envie o seu CV e área de interesse.</p>
+        <p>
+          <a class="btn" href="mailto:contacto@vjpharma.co.mz?subject=Candidatura%20-%20VJ%20Pharma">Enviar CV por Email</a>
+          <a class="btn secondary" href="https://wa.me/258840000000" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </p>
+        <p class="notice">Substitua o e‑mail/WhatsApp acima pelos seus contactos oficiais.</p>
+      </div>
+    </section>
+
+    <section id="formacao" class="section">
+      <h2>Formação</h2>
+      <div class="panel">
+        <p>Cronograma de turmas e workshops (online/presencial). Use este espaço para destacar datas e conteúdos.</p>
+        <ul>
+          <li>Boas Práticas de Dispensação</li>
+          <li>Atendimento e ética no balcão</li>
+          <li>Gestão de stock e PVL</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2>Contacto</h2>
+      <div class="split">
+        <div class="panel">
+          <h3>Empresas</h3>
+          <p>Precisa publicar uma vaga ou contratar rapidamente?</p>
+          <a class="btn" href="mailto:talent@vjpharma.co.mz?subject=Publicar%20Vaga">Pedir Proposta</a>
+        </div>
+        <div class="panel">
+          <h3>Candidatos</h3>
+          <p>Anexe o seu CV e indique cidade/área de interesse.</p>
+          <a class="btn secondary" href="mailto:cv@vjpharma.co.mz?subject=Envio%20de%20CV">Enviar CV</a>
+        </div>
+      </div>
+      <p class="notice">Endereço: Rua Luabo, n.º 50, Malhangalene, Maputo • Email: info@vjpharma.co.mz • Tel/WhatsApp: +258 84 000 0000</p>
+    </section>
   </main>
 
-  <footer>
-    &copy; 2025 VJ Pharma Jobs & Solutions · Todos os direitos reservados
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> VJ Pharma Jobs & Solutions — Todos os direitos reservados.
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
